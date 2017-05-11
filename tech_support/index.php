@@ -25,3 +25,4 @@
     </nav>
 </section>
 <?php include 'view/footer.php'; ?>
+<link rel="stylesheet" type="text/css" href="main.css" />
