@@ -12,9 +12,9 @@ if ($action === NULL) {
     }
 }
 
-if ($action == 'list_products') {
-    $products = get_products(); 
-    include('product_list.php');
+if ($action == 'list_customers') {
+    $products = get_customer(); 
+    include('customer_list.php');
     }
 
 

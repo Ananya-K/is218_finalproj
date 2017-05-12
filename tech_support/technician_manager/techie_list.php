@@ -19,6 +19,7 @@
                 <td><?php echo $t['email']; ?></td>
                 <td><?php echo $t['phone']; ?></td>
                 <td><?php echo $t['pass']; ?></td>
+                
 	       <td><form action="." method="post">
                     <input type="hidden" name="action"
                            value="delete_product">
