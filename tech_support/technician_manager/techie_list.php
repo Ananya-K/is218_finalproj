@@ -7,9 +7,9 @@
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-		<th>E-Mail</th>
-		<th>Phone Number</th>
-		<th>Password</th>
+		            <th>E-Mail</th>
+	             	<th>Phone Number</th>
+		            <th>Password</th>
                 <th>&nbsp;</th>
             </tr>	 
              <?php foreach ($techies as $t) : ?>       
