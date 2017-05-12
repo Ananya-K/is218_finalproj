@@ -1,6 +1,6 @@
 <?php
 require('../model/database.php');
-require('../model/technician_db.php');
+require('../model/techician_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 
@@ -13,15 +13,14 @@ if ($action === NULL) {
 }
 
 if ($action == 'list_technicians'){
-    $techies == get_all_techies();
+    $techies = get_all_techies();
     include('techie_list.php');
 }
 
 else if ($action == 'delete_technicians'){
-    $techID = filter_input(INPUT_POST, 'techID', 
-            FILTER_VALIDATE_INT);
-            include('../errors/error.php');
+    $techID = filter_input(INPUT_POST, 'techID');
     	delete_techie($techID);
+     	header("Location: .");
 }
 
 else if ($action == 'show_add_form'){
@@ -29,22 +28,22 @@ else if ($action == 'show_add_form'){
     include('techie_add.php');
 }
 
-else if ($action == 'add_techie'){
-    $techID = filter_input(INPUT_POST, 'techId');
+else if ($action == 'add_technicians'){
+
     $fname  = filter_input(INPUT_POST, 'firstName');
     $lname  = filter_input(INPUT_POST, 'lastName');
     $email  = filter_input(INPUT_POST, 'email');
     $phone  = filter_input(INPUT_POST, 'phone');
-    $pass   = filter_input(INPUT_POST, 'password');
+    $pass   = filter_input(INPUT_POST, 'pass');
 
-    if($techID == NULL || $techID == FALSE || $fname == NULL || $fname == FALSE || $lname == NULL || $lname == FALSE || $email == NULL  || $email == FALSE || $phone == NULL || $phone == FALSE || $pass == NULL || $pass == FALSE) {
+    if($fname == NULL || $fname == FALSE || $lname == NULL || $lname == FALSE || $email == NULL  || $email == FALSE || $phone == NULL || $phone == FALSE || $pass == NULL || $pass == FALSE) {
  	
 	$error = "Invalid data. Check all fields and try again.";
         include('../errors/error.php');
         }     
     else { 
-        add_techie($techID, $fname, $lname, $email, $phone, $pass);
-	header("Location: .");
+        add_technicians( $fname, $lname, $email, $phone, $pass);
+	      header("Location: .");
         }
 }
     else if ($action == 'list_technicians'){

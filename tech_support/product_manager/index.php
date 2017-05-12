@@ -19,10 +19,10 @@ if ($action == 'list_products') {
 
 
 else if ($action == 'delete_product') {
-    $productCode= filter_input(INPUT_POST, 'productCode', 
-            FILTER_VALIDATE_INT);
-        include('../errors/error.php');
+    $productCode= filter_input(INPUT_POST, 'productCode');
+        //include('../errors/error.php');
     delete_product($productCode);
+	 header("Location: .");
 
 } else if ($action == 'show_add_form') {
     $products = get_products();

@@ -2,11 +2,7 @@
 <main>
     <h1>Add Technicians</h1>
     <form action="index.php" method="post" id="add_technician_form">
-        <input type="hidden" name="action" value="add_technician">
-        <br>
-	
-        <label>Technician ID:</label>
-        <input type="text" name="techID" />
+        <input type="hidden" name="action" value="add_technicians">
         <br>
 
         <label>First Name:</label>

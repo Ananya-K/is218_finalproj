@@ -10,30 +10,20 @@ function get_all_customers() {
 
     return $customers;
 }
-//get customer
-function get_customer($lastName) {
-    global $db;
-    $query = 'SELECT * FROM customers
-              WHERE lastName = :lastName';
-    $statement = $db->prepare($query);
-    $statement->bindValue(":lastName", $lastName);
-    $statement->execute();
-    $customer = $statement->fetch();
-    $statement->closeCursor();
-    return $customer;
-}
+
 
 //search for a customer
 
-function show_customer(){
+function search_customer($lastName){
     global $db;
-    $query = 'SELECT firstName, email, city
+    $query = 'SELECT firstName, lastName, email, city
              FROM customers
              WHERE lastName = :lastName';
     $statement = $db->prepare($query);
     $statement->bindValue(":lastName", $lastName);
     $statement->execute();
-    $customer = $statement->fetch();
+    $customer = $statement->fetchAll();
+    return $customer;
 }
 
 //update customer data
@@ -57,6 +47,18 @@ function update(){
     $statement->bindValue(":customerID", $customerID);
     $statement->execute();
     $statement->closeCursor();         
+}
+
+function customer_email($email){
+    global $db;
+    $query = 'SELECT registrations.productCode, customers.email
+      FROM registrations
+      INNER JOIN customers ON registrations.customerID = customers.customerID';
+    $statement = $db->prepare($query);
+    $statement->bindValue(":email", $email);
+    $statement->execute();
+    $customer = $statement->fetch();
+    return $customer;
 }
 
 ?>

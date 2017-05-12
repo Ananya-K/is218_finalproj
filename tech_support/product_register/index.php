@@ -1,6 +1,6 @@
 <?php
 require('../model/database.php');
-require('../model/customer_db.php');
+require('../model/registration_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 
@@ -8,17 +8,17 @@ if ($action === NULL) {
 
     $action = filter_input(INPUT_GET, 'action');
     if ($action === NULL) {
-        $action = 'list_customers';
+        $action = 'register_product';
     }
 }
 
-   if ($action == 'list_customers') {
-    include('customer_list.php');
+   if ($action == 'login') {
+    include('login.php');
     }
    else if ($action == 'search_customer') {
-     $lastName = filter_input(INPUT_POST, 'lastName');
+     $email = filter_input(INPUT_POST, 'email');
     
-      if ($lastName == NULL || $lastName == FALSE) {
+      if ($email == NULL || $email == FALSE) {
           $error = "Invalid data. Check all fields and try again.";
           include('../errors/error.php');
       }

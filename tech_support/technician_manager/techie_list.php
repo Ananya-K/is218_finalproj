@@ -12,17 +12,18 @@
 		            <th>Password</th>
                 <th>&nbsp;</th>
             </tr>	 
+
              <?php foreach ($techies as $t) : ?>       
            <tr>
                 <td><?php echo $t['firstName']; ?></td>
                 <td><?php echo $t['lastName']; ?></td>
                 <td><?php echo $t['email']; ?></td>
                 <td><?php echo $t['phone']; ?></td>
-                <td><?php echo $t['pass']; ?></td>
+                <td><?php echo $t['password']; ?></td>
                 
 	       <td><form action="." method="post">
                     <input type="hidden" name="action"
-                           value="delete_product">
+                           value="delete_technicians">
                     <input type="hidden" name="firstName"
                     	   value="<?php echo $t['firstName']; ?>">
                     <input type="hidden" name="lastName"
@@ -32,7 +33,7 @@
                     <input type="hidden" name="phone"
                            value="<?php echo $t['phone']; ?>">
                     <input type="hidden" name="pass"
-                           value="<?php echo $t['pass']; ?>">
+                           value="<?php echo $t['password']; ?>">
                     <input type="submit" value="Delete">
                 </form></td>
             </tr>

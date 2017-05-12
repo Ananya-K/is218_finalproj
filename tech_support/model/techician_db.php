@@ -29,9 +29,9 @@ function get_techie($techID){
 }    
 
 //delete techie
-function delete_techie($techID) {
+function delete_technicians($techID) {
     global $db;
-    $query     = 'DELETE FROM tech_products
+    $query     = 'DELETE FROM technicians
                   WHERE techID = :techID';
     $statement = $db->prepare($query);
     $statement ->bindValue(':techID', $techID);
@@ -41,21 +41,14 @@ function delete_techie($techID) {
 
 
 //add techie
-function add_techie($techID, $fname, $lname, $email, $phone, $pass){
+function add_technicians( $fname, $lname, $email, $phone, $pass){
     global $db;
-    $query = 'INSERT TO technicians
-	(techID, firstName, lastName, email, phone, password)
+    $query = 'INSERT INTO technicians
+	(firstName, lastName, email, phone, password)
 	      VALUES
-	(:techID, :firstName, :lastName, :email, :phone, :password)';
+	(:firstName, :lastName, :email, :phone, :password)';
     $statement = $db->prepare($query);
-echo $techID;
-echo $fname;
-echo $lname;
-echo $email;
-echo $phone;
-echo $pass;
 
-    $statement->bindValue(':techID', $techID);
     $statement->bindValue(':firstName', $fname);
     $statement->bindValue(':lastName', $lname);
     $statement->bindValue(':email', $email);

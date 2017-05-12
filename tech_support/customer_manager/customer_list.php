@@ -1,90 +1,48 @@
 <?php include '../view/header.php'; ?>
 <main>
-    <h1>Update Customer</h1> 
+    <h1>Customer Search</h1>
     
-    <form method='post' action='index.php' id='aligned'>
-        <input type='hidden' name='action' value='update_customer'>
-        <input type='hidden' name='customerID'
-               value='1002'
-        
+     <form action="index.php" method="post" id="search_customer_form">
+        <input type="hidden" name="action" value="search_customer">
+
         <div>
-            <label for="firstName">First Name:</label>
-            <input type="text" name="firstName"
-                   value='Kelly'/>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" 
+        placeholder  = "Enter Last Name" />
+
         </div>
+        <input type="submit" value="Search" />
         <br>
-        
-        <div>
-            <label for="lastName">Last Name:</label>
-            <input type="text" name="lastName"
-                   value='Irvin'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" name="address"
-                   value='PO Box 96621'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="city">City:</label>
-            <input type="text" name="city"
-                   value='Washington'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="state">State:</label>
-            <input type="text" name="state"
-                   value='DC'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="postalCode">Postal Code:</label>
-            <input type="text" name="postalCode"
-                   value='20090'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="countryCode">Country Code:</label>
-            <input type="text" name="countryCode"
-                   value='US'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="text" name="phone"
-                   value='(301) 555-8950'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="email">Email:</label>
-            <input type="text" name="email"
-                   value='kelly@example.com'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="password">Password:</label>
-            <input type="text" name="password"
-                   value='sesame'/>
-        </div>
-        <br>
-        
-        <div>
-            <label></label>
-            <input type='submit' value='Update Customer'>
-        </div>
-    </form>
-    
-    <a href='.?action=customer_list'>Search Customers</a>
-    
-</main>
+     </form>	
+     
+     <h1>Results</h1>
+     <p> Enter a last name </p>
+     
+     <table>
+     <tr>
+     <th>Name</th>
+     <th>Email</th>
+     <th>City</th>
+     </tr>
+     
+   <?php foreach ($customer as $c) :?>
+     <tr>
+         <td><?php echo $c['firstName']; ?></td>
+         <td><?php echo $c['email']; ?></td>  
+         <td><?php echo $c['city']; ?></td>
+         
+         <td><form action="." method="post">
+         <input type="hidden" name="action" value="search_customer">
+         <input type="hidden" name="firstName" value="<?php echo $c['firstName']; ?>">
+         <input type="hidden" name="email" value="<?php echo $c['email']; ?>">
+         <input type="hidden" name="city" value="<?php echo $c['city']; ?>">
+         
+         <input type="submit" value="Select">
+         
+     </form></td>
+           </tr>
+     <?php endforeach; ?>
+     </table>
+      
 </main>
 <?php include '../view/footer.php'; ?>
