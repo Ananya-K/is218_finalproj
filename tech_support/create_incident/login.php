@@ -1,34 +1,4 @@
-<?php
-require('../model/database.php');
-require('../model/incidents_db.php'); 
-require('../model/customer_db.php');
-
-if ($action == NULL) {
-    $action = filter_input(INPUT_GET, 'action');
-    if ($action == NULL) {
-        $action = 'login';
-    }
-} 
-
-if ($action == 'login') {
-  include ('login.php');
-      
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-/*<?php include '../view/header.php'; ?>
-
-
+<?php include '../view/header.php'; ?>
 <main>
     <h1>Select Customer</h1>
     
@@ -48,4 +18,4 @@ if ($action == 'login') {
         
      </form>	
 </main>
-<?php include '../view/footer.php'; ?>*/
+<?php include '../view/footer.php'; ?>
